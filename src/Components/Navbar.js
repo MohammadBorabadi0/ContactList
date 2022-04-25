@@ -7,13 +7,13 @@ import { AiOutlinePlus } from "react-icons/ai";
 
 const Navbar = () => {
   return (
-    <nav className="bg-gray-100">
+    <nav className="bg-gray-100 mb-4">
       <section className="max-w-screen-xl mx-auto px-4 py-3 flex flex-col sm:flex-row gap-3 sm:gap-0 items-center justify-between">
         <div className="flex gap-1 items-center">
           <IoMdContact className="text-3xl md:text-4xl text-blue-600" />
           <h1 className="md:text-xl">مخاطبین</h1>
         </div>
-        <div className="flex items-center bg-gray-300 rounded-full p-2">
+        <div className="flex items-center bg-gray-200 rounded-full p-2">
           <GrSearch className="text-lg" />
           <input
             type="text"

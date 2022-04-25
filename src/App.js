@@ -1,5 +1,8 @@
 import React from "react";
 
+import { Switch } from "react-router-dom";
+import { Route } from "react-router-dom";
+
 // Components
 import ContactList from "./Components/ContactList";
 import Navbar from "./Components/Navbar";
@@ -13,7 +16,9 @@ function App() {
     <ContactProvider>
       <FilterProvider>
         <Navbar />
-        <ContactList />
+        <Switch>
+          <Route exact path="/" component={ContactList} />
+        </Switch>
       </FilterProvider>
     </ContactProvider>
   );
