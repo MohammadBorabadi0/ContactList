@@ -7,6 +7,8 @@ import { Route } from "react-router-dom";
 import ContactList from "./Components/ContactList";
 import Navbar from "./Components/Navbar";
 import AddContact from "./Components/AddContact";
+import EditContact from "./Components/EditContact";
+import DetailContact from "./Components/DetailContact";
 
 // Context
 import FilterProvider from "./Providers/context/filter_context";
@@ -19,6 +21,8 @@ function App() {
       <FilterProvider>
         <Navbar />
         <Switch>
+          <Route path="/contact/:id" component={DetailContact} />
+          <Route path="/edit/:id" component={EditContact} />
           <Route path="/add" component={AddContact} />
           <Route exact path="/" component={ContactList} />
         </Switch>

@@ -1,20 +1,23 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 
 // Icons
 import { GrLinkPrevious } from "react-icons/gr";
 import { FiUser } from "react-icons/fi";
 import { HiPhone } from "react-icons/hi";
+
+// Context
 import { useContact } from "../Providers/context/contact_context";
-import { ADD_CONTACT } from "../actions";
 import { useHistory } from "react-router-dom";
+import { EDIT_CONTACT } from "../actions";
 import { Link } from "react-router-dom";
 
-const AddContact = () => {
-  const [name, setName] = useState("");
-  const [mobile, setMobile] = useState("");
-  const { dispatch } = useContact();
+const EditContact = ({ match }) => {
+  const { contacts, dispatch } = useContact();
+  const id = Number(match.params.id);
+  const Item = contacts.find((i) => i.id === id);
+  const [name, setName] = useState(Item.name);
+  const [mobile, setMobile] = useState(Item.mobile);
   const history = useHistory();
-  const inputRef = useRef();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,29 +29,21 @@ const AddContact = () => {
       alert("لطفا شماره موبایل خود را وارد کنید !");
       return;
     }
-    dispatch({ type: ADD_CONTACT, name: name, mobile: mobile });
+    dispatch({ type: EDIT_CONTACT, id: id, name: name, mobile: mobile });
     history.push("/");
   };
-
-  useEffect(() => {
-    inputRef.current.focus();
-  }, []);
 
   return (
     <section className="max-w-screen-xl mx-auto px-6">
       <div className="text-lg mb-8">
-        <h2>افزودن مخاطب</h2>
+        <h2>ویرایش مخاطب</h2>
       </div>
       <div className="pb-8">
         <Link to="/">
           <GrLinkPrevious className="text-xl" />
         </Link>
         <img
-          src={
-            name
-              ? `https://ui-avatars.com/api/?name=${name}&length=1&background=random&size=262`
-              : "./img/icon.png"
-          }
+          src={`https://ui-avatars.com/api/?name=${name}&length=1&background=random&size=262`}
           alt="avatar"
           className="rounded-full mr-5 w-40"
         />
@@ -62,7 +57,6 @@ const AddContact = () => {
           <input
             type="text"
             placeholder="نام"
-            ref={inputRef}
             className="border-b w-1/2 focus:outline-none py-1"
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -85,7 +79,7 @@ const AddContact = () => {
             type="submit"
             className="px-6 py-1 text-lg bg-gray-600 text-white rounded-md"
           >
-            افزودن
+            ویرایش
           </button>
         </div>
       </form>
@@ -93,4 +87,4 @@ const AddContact = () => {
   );
 };
 
-export default AddContact;
+export default EditContact;
