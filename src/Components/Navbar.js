@@ -6,7 +6,13 @@ import { GrSearch } from "react-icons/gr";
 import { AiOutlinePlus } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
+// Context
+import { useFilter } from "../Providers/context/filter_context";
+
 const Navbar = () => {
+  const { updateFilters, filters } = useFilter();
+  const { text } = filters;
+
   return (
     <nav className="bg-gray-100 mb-4">
       <section className="max-w-screen-xl mx-auto px-4 py-3 flex flex-col sm:flex-row gap-3 sm:gap-0 items-center justify-between">
@@ -22,6 +28,9 @@ const Navbar = () => {
             type="text"
             className="bg-transparent px-2 focus:outline-none"
             placeholder="Search"
+            name="text"
+            value={text}
+            onChange={updateFilters}
           />
         </div>
         <div className="hidden sm:flex items-center gap-1 border border-gray-300 px-2 py-1 rounded-full shadow-md">

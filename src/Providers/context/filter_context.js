@@ -1,16 +1,15 @@
 import React, { createContext, useContext, useEffect, useReducer } from "react";
-import { LOAD_CONTACTS } from "../../actions";
+import { FILTER_CONTACTS, LOAD_CONTACTS, UPDATE_FILTERS } from "../../actions";
 
 // Reducer
 import filter_reducer from "../reducers/filter_reducer";
-// Context 
+// Context
 import { useContact } from "./contact_context";
 
 // initialState
 const initialState = {
   filtered_contacts: [],
   all_contacts: [],
-  sort: "",
   filters: {
     text: "",
   },
@@ -27,8 +26,17 @@ const FilterProvider = ({ children }) => {
     dispatch({ type: LOAD_CONTACTS, payload: contacts });
   }, [contacts]);
 
+  useEffect(() => {
+    dispatch({ type: FILTER_CONTACTS });
+  }, [contacts, state.filters]);
+
+  const updateFilters = (e) => {
+    let value = e.target.value;
+    dispatch({ type: UPDATE_FILTERS, payload: value });
+  };
+
   return (
-    <FilterContext.Provider value={{ ...state, dispatch }}>
+    <FilterContext.Provider value={{ ...state, updateFilters }}>
       {children}
     </FilterContext.Provider>
   );
