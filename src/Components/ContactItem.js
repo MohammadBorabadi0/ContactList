@@ -3,6 +3,7 @@ import React from "react";
 // Icons
 import { GrEdit } from "react-icons/gr";
 import { BsTrashFill } from "react-icons/bs";
+import { toFarsiNumber } from "../helper/functions";
 
 const ContactItem = ({ contact }) => {
   return (
@@ -16,8 +17,8 @@ const ContactItem = ({ contact }) => {
         <h4>{contact.name}</h4>
       </div>
       <div className="hidden sm:flex col-span-6 items-center justify-between">
-        <p>{contact.mobile}</p>
-        <div className="flex items-center gap-8">
+        <p>{toFarsiNumber(contact.mobile)}</p>
+        <div className="flex items-center pl-4 gap-8">
           <button>
             <GrEdit className="text-gray-800" />
           </button>
