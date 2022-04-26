@@ -1,6 +1,7 @@
 import React from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { REMOVE_CONTACT } from "../actions";
 
 // Icons
 import { GrLinkPrevious } from "react-icons/gr";
@@ -9,8 +10,6 @@ import { HiPhone } from "react-icons/hi";
 
 // Context
 import { useContact } from "../Providers/context/contact_context";
-import { REMOVE_CONTACT } from "../actions";
-import { useHistory } from "react-router-dom";
 
 const DetailContact = ({ match }) => {
   const { contacts, dispatch } = useContact();
@@ -26,7 +25,7 @@ const DetailContact = ({ match }) => {
   return (
     <section className="max-w-screen-xl mx-auto px-6">
       <div className="text-lg mb-8">
-        <h2>ویرایش مخاطب</h2>
+        <h2>جزئیات مخاطب</h2>
       </div>
       <div className="pb-8 flex justify-between items-center">
         <div>

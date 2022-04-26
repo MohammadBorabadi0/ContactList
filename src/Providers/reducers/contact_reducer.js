@@ -1,8 +1,17 @@
 import React from "react";
-import { ADD_CONTACT, EDIT_CONTACT, REMOVE_CONTACT } from "../../actions";
+import {
+  ADD_CONTACT,
+  EDIT_CONTACT,
+  GET_CONTACTS,
+  REMOVE_CONTACT,
+} from "../../actions";
 
 const contact_reducer = (state, action) => {
   switch (action.type) {
+    case GET_CONTACTS: {
+      return { ...state, contacts: [...action.payload] };
+    }
+
     case ADD_CONTACT: {
       const updatedContacts = [...state.contacts];
       updatedContacts.push({

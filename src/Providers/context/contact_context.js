@@ -1,13 +1,12 @@
-import React, { createContext, useContext, useReducer } from "react";
+import React, { createContext, useContext, useEffect, useReducer } from "react";
+import { GET_CONTACTS } from "../../actions";
+
+// Reducer
 import contact_reducer from "../reducers/contact_reducer";
 
 // initialState
 const initialState = {
-  contacts: [
-    { id: 1, name: "Mohammad", mobile: "09918883876" },
-    { id: 2, name: "Reza", mobile: "09126663691" },
-    { id: 3, name: "Ali", mobile: "09017464276" },
-  ],
+  contacts: [],
 };
 
 // Create Context
@@ -15,6 +14,18 @@ const ContactContext = createContext();
 
 const ContactProvider = ({ children }) => {
   const [state, dispatch] = useReducer(contact_reducer, initialState);
+
+  useEffect(() => {
+    const savedTodos = JSON.parse(localStorage.getItem("contacts"));
+    if (savedTodos) {
+      dispatch({ type: GET_CONTACTS, payload: savedTodos });
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("contacts", JSON.stringify(state.contacts));
+  }, [state.contacts]);
+
   return (
     <ContactContext.Provider value={{ ...state, dispatch }}>
       {children}

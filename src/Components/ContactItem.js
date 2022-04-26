@@ -1,13 +1,13 @@
 import React, { useCallback } from "react";
 
-// Icons
-import { GrEdit } from "react-icons/gr";
-import { BsTrashFill } from "react-icons/bs";
 import { toFarsiNumber } from "../helper/functions";
 import { useContact } from "../Providers/context/contact_context";
 import { REMOVE_CONTACT } from "../actions";
-import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+
+// Icons
+import { GrEdit } from "react-icons/gr";
+import { BsTrashFill } from "react-icons/bs";
 
 const ContactItem = ({ contact }) => {
   const { dispatch } = useContact();
@@ -34,13 +34,19 @@ const ContactItem = ({ contact }) => {
       <div className="hidden sm:flex col-span-6 items-center justify-between">
         <p>{toFarsiNumber(contact.mobile)}</p>
         <div className="flex items-center pl-4 gap-8">
-          <Link to={`edit/${contact.id}`}>
-            <GrEdit className="text-gray-800" />
-          </Link>
           <button
-            onClick={() =>
-              dispatch({ type: REMOVE_CONTACT, payload: contact.id })
-            }
+            onClick={(e) => {
+              e.stopPropagation();
+              history.push(`/edit/${contact.id}`);
+            }}
+          >
+            <GrEdit className="text-gray-800" />
+          </button>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              dispatch({ type: REMOVE_CONTACT, payload: contact.id });
+            }}
           >
             <BsTrashFill className="text-gray-800" />
           </button>
