@@ -15,11 +15,15 @@ const ContactContext = createContext();
 const ContactProvider = ({ children }) => {
   const [state, dispatch] = useReducer(contact_reducer, initialState);
 
-  useEffect(() => {
-    const savedTodos = JSON.parse(localStorage.getItem("contacts"));
+  const getContacts = async () => {
+    const savedTodos = await JSON.parse(localStorage.getItem("contacts"));
     if (savedTodos) {
       dispatch({ type: GET_CONTACTS, payload: savedTodos });
     }
+  };
+
+  useEffect(() => {
+    getContacts();
   }, []);
 
   useEffect(() => {

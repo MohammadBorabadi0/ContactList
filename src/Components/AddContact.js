@@ -35,7 +35,7 @@ const AddContact = () => {
   }, []);
 
   return (
-    <section className="max-w-screen-xl mx-auto px-6">
+    <section className="max-w-screen-xl mx-auto px-2 sm:px-6 mb-8">
       <div className="text-lg mb-8">
         <h2>افزودن مخاطب</h2>
       </div>
@@ -50,7 +50,7 @@ const AddContact = () => {
               : "./img/icon.png"
           }
           alt="avatar"
-          className="rounded-full mr-5 w-40"
+          className="rounded-full mr-5 w-32 sm:w-40"
         />
       </div>
       <hr />
@@ -63,7 +63,7 @@ const AddContact = () => {
             type="text"
             placeholder="نام"
             ref={inputRef}
-            className="border-b w-1/2 focus:outline-none py-1"
+            className="border-b sm:w-1/2 focus:outline-none py-1"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
@@ -75,7 +75,7 @@ const AddContact = () => {
           <input
             type="number"
             placeholder="شماره موبایل"
-            className="border-b w-1/2 focus:outline-none py-1"
+            className="border-b sm:w-1/2 focus:outline-none py-1"
             value={mobile}
             onChange={(e) => setMobile(e.target.value)}
           />
@@ -83,7 +83,7 @@ const AddContact = () => {
         <div>
           <button
             type="submit"
-            className="px-6 py-1 text-lg bg-gray-600 text-white rounded-md"
+            className="px-6 py-1 text-base sm:text-lg bg-gray-600 text-white rounded-md"
           >
             افزودن
           </button>

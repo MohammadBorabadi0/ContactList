@@ -8,7 +8,7 @@ const ContactList = () => {
 
   if (!all_contacts.length) {
     return (
-      <div className="max-w-screen-xl mx-auto px-6">
+      <div className="max-w-screen-xl mx-auto px-2 sm:px-6">
         <h3>هیچ مخاطبی وجود ندارد.</h3>
       </div>
     );
@@ -16,10 +16,10 @@ const ContactList = () => {
 
   if (!filtered_contacts.length) {
     return (
-      <main className="max-w-screen-xl mx-auto px-4">
+      <main className="max-w-screen-xl mx-auto px-2 sm:px-4">
         <div className="grid grid-cols-12 p-2">
           <div className="col-span-6">نام</div>
-          <div className="col-span-6">شماره موبایل</div>
+          <div className="hidden sm:flex col-span-6">شماره موبایل</div>
         </div>
         <hr />
         <div className="mt-4 p-2">
@@ -33,10 +33,10 @@ const ContactList = () => {
   }
 
   return (
-    <main className="max-w-screen-xl mx-auto px-6 py-2">
-      <div className="grid grid-cols-12 p-2">
+    <main className="max-w-screen-xl mx-auto px-2 sm:px-6 py-2">
+      <div className="grid grid-cols-12 p-1 sm:p-2">
         <div className="col-span-6">نام</div>
-        <div className="col-span-6">شماره موبایل</div>
+        <div className="hidden sm:flex col-span-6">شماره موبایل</div>
       </div>
       <hr />
       <div className="mt-2">

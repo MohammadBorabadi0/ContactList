@@ -27,9 +27,9 @@ const ContactItem = ({ contact }) => {
         <img
           src={`https://ui-avatars.com/api/?name=${contact.name}&length=1&background=random&size=40`}
           alt="avatar"
-          className="rounded-full ml-4"
+          className="rounded-full ml-2 sm:ml-4"
         />
-        <h4>{contact.name}</h4>
+        <h4 className="text-sm sm:text-base">{contact.name}</h4>
       </div>
       <div className="hidden sm:flex col-span-6 items-center justify-between">
         <p>{toFarsiNumber(contact.mobile)}</p>

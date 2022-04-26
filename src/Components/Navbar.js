@@ -15,14 +15,14 @@ const Navbar = () => {
 
   return (
     <nav className="bg-gray-100 mb-4">
-      <section className="max-w-screen-xl mx-auto px-4 py-3 flex flex-col sm:flex-row gap-3 sm:gap-0 items-center justify-between">
+      <section className="max-w-screen-xl mx-auto px-1 sm:px-4 py-3 flex flex-col sm:flex-row gap-3 sm:gap-0 items-center justify-between">
         <Link to="/">
           <div className="flex gap-1 items-center">
             <IoMdContact className="text-3xl md:text-4xl text-blue-600" />
             <h1 className="md:text-xl text-slate-700">مخاطبین</h1>
           </div>
         </Link>
-        <div className="flex items-center bg-gray-200 rounded-full p-2">
+        <div className="flex items-center bg-gray-200 rounded-full sm:p-1 p-2">
           <GrSearch className="text-lg" />
           <input
             type="text"
@@ -36,6 +36,9 @@ const Navbar = () => {
         <div className="hidden sm:flex items-center gap-1 border border-gray-300 px-2 py-1 rounded-full shadow-md">
           <AiOutlinePlus />
           <Link to="/add">ایجاد مخاطب</Link>
+        </div>
+        <div className="flex items-center justify-center bg-gray-200 fixed bottom-3 left-1 sm:hidden border-2 rounded-full px-4 py-2 text-2xl shadow-md z-10">
+          <Link to="/add">+</Link>
         </div>
       </section>
     </nav>
