@@ -27,7 +27,7 @@ const Navbar = () => {
           <input
             type="text"
             className="bg-transparent px-2 focus:outline-none"
-            placeholder="Search"
+            placeholder="جستجوی مخاطب"
             name="text"
             value={text}
             onChange={updateFilters}

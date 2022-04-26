@@ -13,7 +13,7 @@ import DetailContact from "./Components/DetailContact";
 // Context
 import FilterProvider from "./Providers/context/filter_context";
 import ContactProvider from "./Providers/context/contact_context";
-
+import { Redirect } from "react-router-dom";
 
 function App() {
   return (
@@ -25,6 +25,7 @@ function App() {
           <Route path="/edit/:id" component={EditContact} />
           <Route path="/add" component={AddContact} />
           <Route exact path="/" component={ContactList} />
+          <Redirect to="/" />
         </Switch>
       </FilterProvider>
     </ContactProvider>
