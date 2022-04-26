@@ -21,7 +21,7 @@ const ContactItem = ({ contact }) => {
   return (
     <section
       onClick={onClick}
-      className="grid grid-cols-12 px-2 py-4 hover:bg-gray-200 rounded-md cursor-pointer"
+      className="grid grid-cols-12 py-4 hover:bg-gray-200 rounded-md cursor-pointer"
     >
       <div className="col-span-6 flex items-center">
         <img
@@ -40,7 +40,7 @@ const ContactItem = ({ contact }) => {
               history.push(`/edit/${contact.id}`);
             }}
           >
-            <GrEdit className="text-gray-800" />
+            <GrEdit className="text-gray-800 text-xl" />
           </button>
           <button
             onClick={(e) => {
@@ -48,7 +48,7 @@ const ContactItem = ({ contact }) => {
               dispatch({ type: REMOVE_CONTACT, payload: contact.id });
             }}
           >
-            <BsTrashFill className="text-gray-800" />
+            <BsTrashFill className="text-gray-800 text-xl" />
           </button>
         </div>
       </div>
