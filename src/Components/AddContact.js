@@ -4,10 +4,10 @@ import React, { useEffect, useRef, useState } from "react";
 import { GrLinkPrevious } from "react-icons/gr";
 import { FiUser } from "react-icons/fi";
 import { HiPhone } from "react-icons/hi";
+
 import { useContact } from "../Providers/context/contact_context";
 import { ADD_CONTACT } from "../actions";
-import { useHistory } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const AddContact = () => {
   const [name, setName] = useState("");
@@ -26,6 +26,14 @@ const AddContact = () => {
       alert("لطفا شماره موبایل خود را وارد کنید !");
       return;
     }
+
+    var isphone = /^(\+\d{1,3}[- ]?)?\d{10}$/;
+
+    if (!isphone.test(mobile)) {
+      alert("شماره موبایل صحیح نیست !!!");
+      return;
+    }
+
     dispatch({ type: ADD_CONTACT, name: name, mobile: mobile });
     history.push("/");
   };

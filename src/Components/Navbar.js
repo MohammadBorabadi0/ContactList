@@ -37,7 +37,7 @@ const Navbar = () => {
           <AiOutlinePlus />
           <Link to="/add">ایجاد مخاطب</Link>
         </div>
-        <div className="flex items-center justify-center bg-gray-200 fixed bottom-3 left-1 sm:hidden border-2 rounded-full px-4 py-2 text-2xl shadow-md z-10">
+        <div className="sm:hidden flex items-center justify-center fixed bottom-8 left-5 ring-2 ring-blue-700 ring-offset-1 w-11 h-11 bg-blue-700 text-white rounded-full shadow-xl text-3xl pt-1">
           <Link to="/add">+</Link>
         </div>
       </section>
