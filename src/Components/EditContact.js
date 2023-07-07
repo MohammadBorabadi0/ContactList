@@ -23,14 +23,24 @@ const EditContact = ({ match }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
     if (name.trim() === "") {
       alert("لطفا نام خود را وارد کنید !");
       return;
     }
+    
     if (mobile.trim() === "") {
       alert("لطفا شماره موبایل خود را وارد کنید !");
       return;
     }
+
+    var isphone = /^(\+\d{1,3}[- ]?)?\d{11}$/;
+
+    if (!isphone.test(mobile)) {
+      alert("شماره موبایل صحیح نیست !!!");
+      return;
+    }
+    
     dispatch({ type: EDIT_CONTACT, id: id, name: name, mobile: mobile });
     history.push("/");
   };
